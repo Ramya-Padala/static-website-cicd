@@ -10,7 +10,7 @@ pipeline {
       stage('Build') {
     steps {
         echo 'building docker image'
-        sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .'
+        sh 'docker build -t httpd:v1 .'
       }
       }
     stage('Stop Old Container') {
@@ -24,7 +24,7 @@ pipeline {
       stage('Deploy') {
             steps {
               echo 'Deploy Apache Application'
-              sh 'docker run -d --name ${CONTAINER} -p ${PORT}:80 ${IMAGE_NAME}:${IMAGE_TAG}'
+              sh 'docker run -d --name ${CONTAINER} -p 8080:80 httpd:v1'
       }
     }    
   }
