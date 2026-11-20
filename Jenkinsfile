@@ -9,8 +9,8 @@ pipeline {
   }
       stage('build') {
     steps {
-        echo"build docker image"
-        sh 'docker build -t httpd:latest:v1 .'
+        echo"building docker image"
+        sh 'docker build -t ${IMAGE_NAME}:${IMAGE_TAG} .'
       }
       }
       stage('deploy') {
