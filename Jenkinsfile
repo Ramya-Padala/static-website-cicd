@@ -10,7 +10,7 @@ pipeline {
       stage('Build') {
     steps {
         echo 'building docker image'
-        sh 'docker build -t httpd:v1 .'
+        sh 'docker build -t httpd:latest .'
       }
       }
     stage('Stop Old Container') {
@@ -24,7 +24,7 @@ pipeline {
       stage('Deploy') {
             steps {
               echo 'Deploy Apache Application'
-              sh 'docker run -d --name apache2 -p 8080:80 httpd:v1'
+              sh 'docker run -d --name apache-website -p 8080:80 httpd:latest'
       }
     }    
   }
