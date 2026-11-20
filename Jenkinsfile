@@ -10,7 +10,7 @@ pipeline {
       stage('build') {
     steps {
         echo"build docker image"
-        sh 'docker build -t apache-static-website:v1 .'
+        sh 'docker build -t httpd:latest:v1 .'
       }
       }
       stage('deploy') {
