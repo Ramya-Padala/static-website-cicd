@@ -15,10 +15,8 @@ pipeline {
       }
     stage('Stop Old Container') {
             steps {
-                sh '''
-                    docker stop ${CONTAINER} || true
-                    docker rm ${CONTAINER} || true
-                '''
+                echo 'Removing previous container...'
+                sh 'docker rm -f ${CONTAINER} || true'
             }
         }
       stage('Deploy') {
